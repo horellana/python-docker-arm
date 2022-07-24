@@ -32,15 +32,21 @@ jobs:
         with:
           push: true
           tags: ${{ secrets.DOCKER_HUB_USER }}/python3-arm:${{ env.SHORT_SHA }}
+          cache-from: type=registry,ref=${{ secrets.DOCKER_HUB_USER }}/python3-arm:${{ env.SHORT_SHA }}
+          cache-to: type=inline
       -
         name: Build and push with python version tag
         uses: docker/build-push-action@v3
         with:
           push: true
           tags: ${{ secrets.DOCKER_HUB_USER }}/python3-arm:${{ env.PYTHON_VERSION }}
+          cache-from: type=registry,ref=${{ secrets.DOCKER_HUB_USER }}/python3-arm:${{ env.PYTHON_VERSION }}
+          cache-to: type=inline
       -
         name: Build and push with latest tag
         uses: docker/build-push-action@v3
         with:
           push: true
           tags: ${{ secrets.DOCKER_HUB_USER }}/python3-arm:latest
+          cache-from: type=registry,ref=${{ secrets.DOCKER_HUB_USER }}/python3-arm:latest
+          cache-to: type=inline
