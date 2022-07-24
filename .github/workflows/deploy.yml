@@ -13,7 +13,7 @@ jobs:
         run: echo "SHORT_SHA=`echo ${GITHUB_SHA} | cut -c1-8`" >> $GITHUB_ENV
 
       - name: Add PYTHON_VERSION env property, parsed from Dockerfile
-        run: echo "PYTHON_VERSION=`head -n 1 < Dockerfile | perl -ne 'print $1  if /.+:(.+) as*/'`" >> $GITHUB_ENV
+        run: echo "PYTHON_VERSION=`head -n 1 < Dockerfile | perl -ne 'print $1  if /.+:(.+)\-+/'`" >> $GITHUB_ENV
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v2
