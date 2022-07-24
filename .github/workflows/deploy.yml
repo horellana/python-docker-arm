@@ -3,7 +3,7 @@ on:
   push
 
 jobs:
-  docker:
+  build-and-deploy-docker-image:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
